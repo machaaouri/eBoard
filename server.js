@@ -1,10 +1,15 @@
 var http = require('http');
+var express = require("express");
+var app = express();
 
 
-var server = http.createServer(function(req,res){
-    console.log(req.url);
-    res.write("<html><body><h1>" + req.url + "</h1></body></html>");
-    res.end();
+app.set("view engine","vash");
+
+app.get("/",function(req,res){
+
+    res.render("index",{title : "Expres + Vash"}); 
 });
+
+var server = http.createServer(app);
 
 server.listen(3000);

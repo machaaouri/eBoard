@@ -2,12 +2,13 @@
   "name": "eBoard",
   "version": "0.1.0",
   "description": "eBoard is online board based on sticky notes",
-  "main": "app.js",
+  "main": "server.js",
   "author": {
     "name": "Machaaouri Houssame"
   },
   "dependencies": {
     "express": "^4.15.3",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "vash": "^0.12.2"
   }
 }
