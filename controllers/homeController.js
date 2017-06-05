@@ -1,9 +1,13 @@
 (function(homeController){
 
-  homeController.init = function(app){
+  var data = require("../data");
 
-      app.get("/",function(req,res){
-          res.render("index",{title: "Express + Vash"});
-      });
+  homeController.init = function(app){
+    
+    data.getNotesCategories(function(err,results){
+        app.get("/",function(req,res){
+                res.render("index",{title: "Express + Vash",error:err,categories: results});
+            });
+        });
   };
 })(module.exports);

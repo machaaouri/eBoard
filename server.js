@@ -7,13 +7,12 @@ var controllers = require('./controllers');
 
 app.set("view engine","vash");
 
+//set the public static resources folder
+
+app.use(express.static(__dirname + "/public"));
+
 //Map the routes
 controllers.init(app);
-
-app.get("/",function(req,res){
-
-    res.render("index",{title : "Expres + Vash"}); 
-});
 
 var server = http.createServer(app);
 
