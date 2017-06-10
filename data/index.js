@@ -3,6 +3,19 @@
     var seedData = require('./seedData');
     var database = require("./database");
 
+
+    data.addNote = function (categoryName, noteToInsert, next) {
+        database.getDb(function (err, db) {
+            if (err) {
+                next(err);
+            } else {
+                //even though i'm creating a new note , i'm using update , because i'm updating an existing document
+                // which is category
+                db.notes.update({ name: categoryName }, { $push: { notes: noteToInsert } }, next);
+            }
+        });
+    };
+
     data.getNotesCategories = function (next) {
         database.getDb(function (err, db) {
             if (err) {
@@ -18,6 +31,17 @@
             }
         });
     }
+
+    data.getNotes = function (categoryName, next){
+
+        database.getDb(function (err,db){
+            if(err) {
+                next(err);
+            } else {
+                db.notes.findOne({name:categoryName},next);
+            }
+        });
+    };
 
     data.createNewCategory = function (categoryName, next) {
         database.getDb(function (err, db) {
