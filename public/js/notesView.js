@@ -2,10 +2,11 @@
 (function (angular) {
 
     var theModule = angular.module("notesView", ["ui.bootstrap"]);
-
+    // the variables that start with $ are specific to angular
     theModule.controller("notesViewController",
         ["$scope", "$window", "$http",
             function ($scope, $window, $http) {
+
                 $scope.notes = [];
                 $scope.newNote = createBlankNote();
 
